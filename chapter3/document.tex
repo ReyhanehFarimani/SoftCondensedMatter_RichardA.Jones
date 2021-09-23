@@ -1,0 +1,229 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{index}
+\makeindex
+\title{\large{\textbf{Chapter 3 Soft condensed matter}}}
+\author{Reyhaneh Afghahi Farimani\\ 99204008}
+\date{March 5, 2021}
+\begin{document}
+\maketitle
+\textbf{3.1.} the phase behavior of a certain liquid mixture can be described by the regular solution model,
+ with the interaction parameter being given by $\chi = \frac{600}{T}$,
+  where T is the temperature in kelvin. Calculate the following quantities:
+
+\textbf{a)} The temperature at the critical point.
+
+\includegraphics[scale=0.4]{"1.jpg"}
+\[
+\chi = \frac{600}{T} = 2 \Rightarrow T =300
+\]
+
+\textbf{b)} The volume fraction of the coexisting composition at 273k.
+
+\includegraphics[scale=0.4]{"2.jpg"}
+
+\[\phi = \phi_0 , \phi_1 , \phi_2\quad 
+\Rightarrow \frac{\partial \Delta F}{\partial \phi} = 0\]
+\[
+\Delta F = \phi \ln(\phi) +(1- \phi)\ln(1- \phi) + \chi \phi (1- \phi)
+\]
+\[
+\frac{\partial \Delta F}{\partial \phi} = 0 
+\Rightarrow \ln(\frac{\phi}{1-\phi}) + \chi (1 - 2\phi) =0  
+\Rightarrow \ln(\frac{\phi}{1-\phi}) + \frac{600}{273} (1 - 2\phi) =0 
+\]
+\[
+\phi_1 =  0.24969272763784 \quad \phi_2 = 0.750307272362156
+\]
+\textbf{c)}The volume fraction at the spinodal line at 273K.
+\[
+\frac{\partial^2 \Delta F}{\partial \phi^2} = 0 
+\Rightarrow \frac{1}{\phi} + \frac{1}{1- \phi} -2\chi =0 
+\Rightarrow \frac{1}{\phi} + \frac{1}{1- \phi} = \frac{1200}{273}
+\]
+\[
+\phi_a = \frac{7}{20} =0.35 ,\quad \phi_b = \frac{13}{20} =0.65
+\]
+
+\textbf{3.2.a)}
+Use regular solution theory to drive an approximation expression,
+ valid in the limit of a large, positive value of interaction parameter $\chi$,
+ for the limit of solubility of one immiscible liquid in another.
+
+\[
+ \frac{\partial \Delta F}{\partial \phi} = 0 
+ \to ln(\frac{\phi}{1 - \phi}) + \chi (1 - 2 \phi) =0
+\]
+\[
+\chi \to \infty \Rightarrow \phi \to 0 
+\Rightarrow ln(\phi) +\chi =0 
+\]
+\[
+\phi = e^{-\chi}
+\]
+\textbf{b)}Comment on your result.
+
+since $\chi \propto \frac{U}{k_BT}$, $e^{-\chi}$ is simply Boltzmann factor.
+
+\textbf{3.3.} The value of $\chi$ between water and linear hydrocarbons may 
+be taken to be given by the formula $\chi = 3.04 + 1.37n_C$, 
+where $n_C$ is the number of carbon atoms in the hydrocarbon. 
+Use the formula derived in the last question to compare the 
+limiting solubility in water of hexane ($C_6H_{14}$),
+octane ($C_8H_{18}$), and decane ($C_{10}H_{22}$).
+
+hexane: \[
+\chi = 3.04 + 1.37\times 6 = 11.26\Rightarrow \phi =
+ e^{-11.26} = 0.000012878 =1.2878 \times 10^{-5}
+\]
+
+octane: \[
+\chi = 3.04 + 1.37\times 8 = 14\Rightarrow \phi =
+ e^{-14} = 0.000000832 = 8.32 \times 10^{-7}
+\]
+
+decane: \[
+\chi = 3.04 + 1.37\times 10 = 16.74
+\Rightarrow \phi = e^{-16.74} = 0.000000054 = 5.4\times 10^{-8}
+\]
+
+\textbf{3.4.}Estimate the inter facial tension between octane and water.
+ You may take the interaction parameter between octane and 
+ water as $\chi=14.0$ and the molecule volume as $2.36 \times 10^{-29} m^3$.
+
+\[
+\gamma =\frac{\chi k_B T}{z v^{\frac{2}{3}}} = 
+\frac{14.0 \times 4.11 \times 10^{-21}J}{8 \times 2.36^{\frac{2}{3}} \times 10^{-29 \times \frac{2}{3} }m^2} = 0.087920325 [\frac{J}{m^2}] = 0.087920325 [\frac{N}{m^3}]
+\]
+
+\textbf{3.5.} A light scattering experiment is carried out on a phase separating polymer mixture.
+ Values of intensity are recorded as a function of time at a variety of scattering angles q.
+  The data is shown.
+
+\textbf{a)} Plot the scattered intensity as a function time for $ Q = 1.21 \mu m^{-1}$.
+ Explain the shape of the curve.
+
+\includegraphics[scale=0.6]{"1.21.jpg"}
+
+according to Cahn Hillard equation we expect:
+\[
+\phi(x,t) \propto \exp(R(Q,t)t)
+\]
+\[
+I(Q,t) \propto \exp(2R(Q,t)) \to \ln(I(Q,t)) =2R(Q,t)
+\]
+Lifshitz Slyozov law:
+\[
+R(Q,t) \propto t^{\frac{1}{3}} \Rightarrow ln(I(Q,t)) \propto t^{\frac{1}{3}}
+\]
+
+fitting using python scipy package:
+
+\includegraphics[scale=0.6]{"fit.jpg"}
+
+\textbf{b)} Use the data to extract values of the amplification factor,$R(Q)$,
+ as a function of scattering wavefactor?
+
+
+fitted value of R(q) in scipy:
+
+\[
+R(Q) = 2.4624513 
+\]
+
+\textbf{c)}
+How according to Cahn Hillard theory do you expect R(Q) to vary with Q?
+Plot your values of on the degree of argument and comment on the degree of agreement?
+
+according to Cahn Hillard equation we expect:
+\[
+I(Q,t) \propto \exp(2R(Q)) \to \ln(I(Q,t)) =2R(Q)
+\]
+\[
+R(q) = -D_{eff} q^2 (1+\frac{2\kappa q^2}{f"_0})
+\]
+we do what we have done for Q=1.21, 
+for other values of Q as well and obtain R(Q) as a function of Q.
+plotting using python matplotlib package:
+
+\includegraphics[scale=0.3]{"0.97.jpg"}
+\includegraphics[scale=0.3]{"1.21.jpg"}
+\includegraphics[scale=0.3]{"1.46.jpg"}
+
+\includegraphics[scale=0.3]{"1.86.jpg"}
+\includegraphics[scale=0.3]{"2.78.jpg"}
+\includegraphics[scale=0.3]{"3.jpg"}
+
+plotting R(Q) versus Q:
+
+\includegraphics[scale=0.6]{"fit2.jpg"}
+
+fitting this function, using python scipy package:
+
+\[
+R(q) = -D_{eff} q^2 (1+\frac{2\kappa q^2}{f"_0})
+\]
+\includegraphics[scale=0.6]{"fit3.jpg"}
+
+\textbf{d)} Use the graph to estimate a value of the effective diffusion coefficient $D_{eff}$.
+\[
+D_{eff} =-0.20581287 \to f"<0
+\]
+
+\textbf{3.6}Droplet of molten silver, with radius $100\mu m$,
+ are observed under a microscope as the temperature is lowered below the melting point.
+  A large number of droplets all solidify 227K below the melting point.
+
+\textbf{a)} Assuming that these droplets are solidifying by homogeneous nucleation,
+ calculate the solid liquid inter facial energy of silver.
+  You may assume that the droplet solidifies when it contains,
+  one nucleus of the critical size,
+  and that during the experimental time scale, 
+  each atom makes $5\times10^{13}$ attempts to form a nucleus.
+\[
+\exp(\frac{-\Delta G^*}{k_BT}) = \frac{1}{Number Of Attemps} =
+ \frac{1}{5\times 10^{13}\times N}
+\]
+\[
+N = V_{droplet} [cm^3] \times Density[gcm^{-3}] \times AtomicMass[g N_{A}^{-1}] \times N_{A}
+\]
+\[
+N = \frac{4}{3} \pi (10^{-2})^3 \times 10.49 \times 108 \times 6.63 \times10^{23} = 3
+.1 \times 10^{21}
+\]
+\[
+\frac{\Delta G^*}{k_BT} = \ln(5\times 10^{13}\times3.1 \times 10^{21})=
+ 34\ln{10} + \ln{5} + \ln{3.1} = 81.028733186
+\]
+equation 3.36 in book:
+\[
+\Delta G^* = \frac{16\pi}{3} \gamma_{sl}^{3} (\frac{T_m}{\Delta H_m})^2 \frac{1}{\Delta T^2}
+\]
+\[
+81.028 \times (1234 - 227) \times 1.38 10^{-23} J =
+ \frac{16\pi}{3} \gamma_{sl}^{3} (\frac{1234K}{ 1.1\times 10^9 Jm^{-3}})^2 \frac{1}{ 227^2 K^2}
+\]
+\[
+\gamma_{sl} = 0.140131334[Jm^{-2}]
+\]
+
+\textbf{b)} Recent computer simulation suggest that the interface between a crystal and its melt,
+ rather than being automaticly sharp,
+  is between 5 and 10 atomic spacing broad.
+  What the implification of this is result for classical nucleation theory?
+  Illustrating your answer by calculating the classical critical nucleus size in part a.
+
+It would reduce the value of $\gamma_{sl}$.
+\[
+r^* = \frac{2\gamma_{sl} T_m}{\Delta H_m \Delta T} = 
+\frac{2\times 0.14013 Jm^{-2} \times 1234 K}{1.1\times 10^9 Jm^{-3} 277K} = 
+1.13 nm 
+\]
+
+\end{document}
