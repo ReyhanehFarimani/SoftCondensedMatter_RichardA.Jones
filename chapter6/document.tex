@@ -1,0 +1,94 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{index}
+\makeindex
+\title{\large{\textbf{ Chapter Six Soft condensed matter\\ Richard A.L.Jones}}}
+\author{Reyhaneh Afghahi Farimani\\ 99204008}
+\date{June 19,2021}
+\begin{document}
+\maketitle
+\textbf{6.1.} In a certain chemical cross-linking reaction involving a monomer that can react at three sites,
+ the degree of reaction f obeys the second-order rate law
+\begin{equation} 
+\frac{df}{dt} = k (1-f)^2
+\end{equation}
+where the rate constant k has the value $ 4 \times 10^{-4} s^{-1}$. Use the Flory\_Stochmayer  theory to calculate
+
+a. the times at which the gel point is reached,
+\[
+(1) \to \frac{df}{dt} = k (1-f)^2 \to \frac{df}{(1-f)^2} = kdt
+\]
+\[
+\int_{0}^{f} \frac{df'}{(1-f')^2} = \int_{0}^{t} kdt' \to \frac{1}{1-f} - 1 = kt
+\]
+\begin{equation} 
+	\frac{f}{1-f} = kt
+\end{equation}
+\[
+(6.4) \to f_c = \frac{1}{z-1} = \frac{1}{3-1} = \frac{1}{2}
+\]
+\[
+t_c = \frac{1}{k} (2-1) = \frac{1}{k} = \frac{1}{4} \times 10^4 s = 2500s
+\]
+
+b. the time after which three quarters of monomers have been polymerized,
+
+\[
+f = \frac{3}{4} , (2) \to 3 = kt \to t = \frac{3}{k} = \frac{3}{4} \times 10^4 s 
+\]
+\[
+t = 7500s
+\]
+
+c. the time after which three quarters of monomers form part of the infinite network.
+
+\[
+(6.7) \to P = f(1 - Q^3) , f>f_c \to P = f(1 - (\frac{1-f}{f})^3)
+\]
+\[
+\frac{3}{4} = f(1 - (\frac{1-f}{f})^3)
+\]
+roots:
+\[
+f_1 =0.77039,f_2 =0.55230 - 0.58650 i, f_3 = 0.55230 + 0.58650 i
+\]
+\[
+(2)\to kt = \frac{0.77039}{1-0.77039}=3.35521101
+\]
+\[
+t = \frac{1}{k}3.35521101  = 8388.027s
+\]
+
+\textbf{6.2.}In an experiment to test the application of the theory of peculation to gelation,
+ the gel fraction is determined when the fractional extent of reaction is a small degree
+  $\Delta f$ larger than its value at the gel point.
+
+a. Is the value of gel fraction at a fractional extent of reaction $\Delta f/2$
+ larger or smaller when predicated by peculation theory than
+  the value predicted by Flory\_Stochmayer theory?
+
+b.By what factor do the two prediction differ?
+
+we know for classical peculation theory the gel fraction can be expanded:
+\[
+(6.9) \to \frac{P}{f} = 3(f-f_c) + O(f-f_c)^3
+\]
+Considering the leading order the relation is linear and therefore:
+\[
+\Delta f \to \frac{\Delta f}{2} \Rightarrow \frac{P}{f} \to \frac{P}{f}\times0.5
+\] 
+By contrast, Monte Carlo Simulation of bond peculation in 3D gives:
+\[
+\frac{P}{f} = (f-f_c)^{0.41}
+\]
+therefore
+\[
+\Delta f \to \frac{\Delta f}{2} \Rightarrow \frac{P}{f} \to \frac{P}{f}\times0.7526
+\]
+the value predicted by Flory\_Stochmayer theory is smaller.
+
+\end{document}
